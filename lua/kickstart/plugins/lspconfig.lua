@@ -198,6 +198,27 @@ return {
       --  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
       local capabilities = require('blink.cmp').get_lsp_capabilities()
 
+      local ltex_plus_filetypes = {
+        'bib',
+        'context',
+        'gitcommit',
+        'html',
+        'markdown',
+        'org',
+        'pandoc',
+        'plaintex',
+        'quarto',
+        'mail',
+        'mdx',
+        'rmd',
+        'rnoweb',
+        'rst',
+        'tex',
+        -- 'text',
+        'typst',
+        'xhtml',
+      }
+
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
       --
@@ -208,18 +229,41 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
-        -- Some languages (like typescript) have entire language plugins that can be useful:
-        --    https://github.com/pmizio/typescript-tools.nvim
-        --
-        -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
-        --
+        awk_ls = {},
+        bashls = {},
+        clangd = {}, -- TODO: setup compile_commands.json generation for any projects that need to use this LSP
+        csharp_ls = {}, -- or use omnisharp or rosyln_ls instead?
+        css_variables = {},
+        cssls = {},
+        docker_compose_language_service = {},
+        dockerls = {},
+        eslint = {},
+        -- gdscript = {}, -- TODO: in docs but causes mason error
+        -- gdshader_lsp = {}, -- TODO: in docs but causes mason error
+        gh_actions_ls = {},
+        gitlab_ci_ls = {},
+        glsl_analyzer = {},
+        gradle_ls = {},
+        graphql = {},
+        groovyls = {},
+        html = {},
+        -- java_language_server = {}, -- Note - for fancier use cases jdtls lsp or nvim-jdtls plugin may be better -- TODO: mason errors during install
+        jqls = {},
+        jsonls = {},
+        kotlin_language_server = {},
+        ltex_plus = {
+          filetypes = ltex_plus_filetypes,
+          settings = {
+            ltex = {
+              enabled = ltex_plus_filetypes,
+            },
+          },
+        }, -- LaTeX, Markdown, etc. LSP
 
         lua_ls = {
           -- cmd = { ... },
@@ -235,6 +279,28 @@ return {
             },
           },
         },
+
+        -- metals = {}, -- Scala LSP -- TODO: in docs but causes mason error
+        perlnavigator = {}, -- Other ones that have about the same level of activity are perlls and perlpls
+        pico8_ls = {},
+        ruby_lsp = {}, -- or use solargraph? see also standardrb, syntax_tree, and typeprof
+        spyglassmc_language_server = {}, -- Minecraft datapacks, may require additional configuration
+        sqls = {}, -- See also the confusingly similarly named sqlls, and sqruff
+        terraformls = {}, -- This is the official hashicorp one, see also terraform_lsp
+        tflint = {},
+        typos_lsp = {}, -- Code spellchecker
+
+        -- Some languages (like typescript) have entire language plugins that can be useful:
+        --    https://github.com/pmizio/typescript-tools.nvim
+        --
+        -- But for many setups, the LSP (`ts_ls`) will work just fine
+        ts_ls = {}, -- see also ts_query_ls, tsgo
+
+        vacuum = {}, -- OpenAPI/Swagger linter/analyzer, requires filetypes to be registered
+        vimls = {}, -- Vimscript
+        yamlls = {},
+
+        -- TODO: There are a shitload of python LSPs - research and pick one
       }
 
       -- Ensure the servers and tools above are installed
