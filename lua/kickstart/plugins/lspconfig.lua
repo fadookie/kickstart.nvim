@@ -28,6 +28,8 @@ return {
 
       -- Allows extra capabilities provided by blink.cmp
       'saghen/blink.cmp',
+
+      'Hoffs/omnisharp-extended-lsp.nvim', -- omnisharp-roslyn extensions plugin
     },
     config = function()
       -- Brief aside: **What is LSP?**
@@ -108,6 +110,16 @@ return {
           --  Useful when you're not sure what type a variable is and you want to see
           --  the definition of its *type*, not where it was *defined*.
           map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+
+          -- Telescope keybinds for omnisharp
+          vim.keymap.set('n', 'gr', function()
+            require('omnisharp_extended').telescope_lsp_references(require('telescope.themes').get_ivy { excludeDefinition = true })
+          end, { noremap = true })
+          vim.keymap.set('n', 'gd', require('omnisharp_extended').telescope_lsp_definition, { noremap = true })
+          vim.keymap.set('n', '<leader>D', function()
+            require('omnisharp_extended').telescope_lsp_references()
+          end, { noremap = true })
+          vim.keymap.set('n', 'gi', require('omnisharp_extended').telescope_lsp_implementation, { noremap = true })
 
           -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
           ---@param client vim.lsp.Client
@@ -237,7 +249,8 @@ return {
         awk_ls = {},
         bashls = {},
         clangd = {}, -- TODO: setup compile_commands.json generation for any projects that need to use this LSP
-        csharp_ls = {}, -- or use omnisharp or rosyln_ls instead?
+        -- csharp_ls = {}, -- or use omnisharp or rosyln_ls instead?
+        omnisharp = {},
         css_variables = {},
         cssls = {},
         docker_compose_language_service = {},
