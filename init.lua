@@ -102,7 +102,7 @@ vim.g.have_nerd_font = false
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
+vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -1092,6 +1092,18 @@ require('lazy').setup({
     },
   },
 })
+
+-- Eliot's Additional customizations below
+
+vim.o.backspace = '2' -- No backspace weirdness - not sure if this is necessary with nvim/kickstart
+vim.o.expandtab = true -- Tabs are converted to spaces
+vim.o.tabstop = 4 -- Tabs are four spaces wide
+vim.o.shiftwidth = 4 -- When auto-indent is on, use four spaces
+vim.o.smarttab = true -- Switch between indent and tab, depending on location
+
+vim.o.hi = 150 -- command history is 150 long
+
+-- vim.opt.shortmess:remove { 'S' } -- Enable display of position and count of search results -- This is handled by the kickstart status line but I'm leaving this in as a reference for how to remove options
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
