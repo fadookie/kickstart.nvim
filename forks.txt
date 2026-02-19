@@ -1,0 +1,8 @@
+# Main upstream repo (unmaintained as of February 2026)
+git remote add upstream-monolithic git@github.com:nvim-lua/kickstart.nvim.git
+
+# kickstart-modular fork
+git remote add upstream-dam9000-modular git@github.com:dam9000/kickstart-modular.nvim.git
+
+# Soft fork of possible new maintainer with modular structure, main branch is maintained-upstream, see https://github.com/nvim-lua/kickstart.nvim/pull/1627
+git remote add upstream-modular git@github.com:oriori1703/kickstart-modular.nvim.git
