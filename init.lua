@@ -627,6 +627,9 @@ require('lazy').setup({
           -- Toggle to show/hide diagnostic messages
           map('<leader>td', function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end, '[T]oggle [D]iagnostics')
 
+          -- Toggle to show/hide diagnostic messages
+          map('<leader>do', vim.diagnostic.open_float, '[D]iagnostic [O]pen Float')
+
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
           --    See `:help CursorHold` for information about when this is executed
@@ -721,6 +724,7 @@ require('lazy').setup({
         --  Feel free to add/remove any LSPs here that you want to install via Mason. They will automatically be installed and setup.
         mason = {
           -- clangd = {},
+          bashls = {},
           -- gopls = {},
           -- pyright = {},
           -- rust_analyzer = {},
