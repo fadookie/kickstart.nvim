@@ -448,6 +448,17 @@ require('lazy').setup({
           -- Useful when you're not sure what type a variable is and you want to see
           -- the definition of its *type*, not where it was *defined*.
           vim.keymap.set('n', 'grt', builtin.lsp_type_definitions, { buffer = buf, desc = '[G]oto [T]ype Definition' })
+
+          -- Toggle to show/hide diagnostic messages
+          vim.keymap.set(
+            'n',
+            '<leader>td',
+            function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end,
+            { buffer = buf, desc = '[T]oggle [D]iagnostics' }
+          )
+
+          -- Toggle to show/hide diagnostic messages
+          vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float, { buffer = buf, desc = '[D]iagnostic [O]pen Float' })
         end,
       })
 
@@ -601,6 +612,7 @@ require('lazy').setup({
       ---@type table<string, vim.lsp.Config>
       local servers = {
         -- clangd = {},
+        bashls = {},
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
