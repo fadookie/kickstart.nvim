@@ -609,6 +609,7 @@ require('lazy').setup({
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
       --  See `:help lsp-config` for information about keys and how to configure
+      --  See `:help lspconfig-all` for a list of all the pre-configured LSPs
       ---@type table<string, vim.lsp.Config>
       local servers = {
         -- clangd = {},
