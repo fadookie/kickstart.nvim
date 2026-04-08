@@ -656,6 +656,10 @@ require('lazy').setup({
             Lua = {},
           },
         },
+
+        kotlin_lsp = {},
+
+        yamlls = {},
       }
 
       -- Ensure the servers and tools above are installed
