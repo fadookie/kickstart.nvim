@@ -93,9 +93,10 @@ u - undo a change
 U - revert an entire line
 CTRL+R - redo (why the hell is this one of the only commands in vim that requires a key chord? sigh.)
 [#]G - go to line # in the file
-CTRL+g - print info about file, current line, etc.
-CTRL+o - Navigate backwards in jump history
-CTRL+i - Navigate forwards in jump history
+CTRL-g - print info about file, current line, etc.
+CTRL-o - Navigate backwards in jump history
+CTRL-i - Navigate forwards in jump history
+CTRL-] - Jump to tag definition. See :help tags-and-searches
 
 misc:
 ga - Print the ascii value of the character under the cursor
@@ -143,6 +144,7 @@ SHIFT+ZZ - same as :wq
 :syntax on - Enable syntax highlighting
 :set syntax=[LANGUAGE] - Set programming language for syntax highlighting
 :source $MYVIMRC - Reload vim/nvim config
+:terminal - Open embedded terminal
 CTRL-b - Beginning of line in command mode
 CTRL-e - End of line in command mode
 CTRL-r CTRL-w - Copy word under the cursor into the command line - see :help c_CTRL-R_CTRL-W
@@ -150,16 +152,25 @@ CTRL-r - Paste word from register. Type a number after to use a numbered registe
 
 
 window:
+:help window
 CTRL-W _ (set window to max height)
+CTRL-W T (move window to new tab)
+CTRL-W CTRL-] CTRL-W T - Opens tag in new window and moves window to tab (best to remap this to something else)
 
 tabs:
+:help tab-page
 vim -p - From the command line, -p opens all files in tabs instead of buffers
 gt     - Next tab
 gT     - Previous tab
 :qa    - Quit all tabs
 :wqa   - Save and quit all tabs
 :tabdo - Run ANY command across ALL open tabs! ex ":tabdo w" to save all tabs, ":tabdo normal @a" to run macro A on all tabs, etc.
+:tab sball - Open all buffers in tabs https://stackoverflow.com/a/5483206/350761
 
+autocompletion:
+CTRL-n - Next suggestion
+CTRL-p - Previous suggestion
+CTRL-y - Accept suggestion
 
 search:
 type / to begin entering a search (that will look forwards from the cursor position)
@@ -206,6 +217,10 @@ These can be used to run macros and all sorts of shit
 
 if the sequence you need to perform is complex, go ahead and make a macro, and to run it in the desired spots, do :%g/.../normal @q  (assuming q is the macro register)
 
+NeoVim
+
+For lots of great info on kickstart.nvim see https://www.youtube.com/watch?v=m8C0Cq9Uv9o
+
 NeoVim/kickstart.nvim defaults:
 <leader> is set to spacebar by default.
 <leader>s - Search (Telescope) menu
@@ -214,9 +229,13 @@ NeoVim/kickstart.nvim defaults:
 :MasonToolsClean - Remove orphaned tool dependencies
 
 kickstart.nvim LSP:
-:LspInfo - Get diagnostic info about running language servers
-:LspRestart - Restarts LSP client, maybe server too? Can pass a specific client ID or config name, otherwise it will restart all.
+See https://vonheikemen.github.io/devlog/tools/neovim-lsp-client-guide/
+
+:checkhealth vim.lsp (legacy: :LspInfo) - Get diagnostic info about running language servers
+:lsp restart (legacy: :LspRestart) - Restarts LSP client, maybe server too? Can pass a specific client ID or config name, otherwise it will restart all.
+:help lsp-defaults - Info on default LSP keybinds
 K - Show LSP documentation hover box
+KK - Show LSP documentation in floating window (q dismisses)
 grn - Rename the variable under your cursor.
 gra - Execute a code action, usually your cursor needs to be on top of an error
 grr - Find references for the word under your cursor.
