@@ -267,6 +267,8 @@ TODO: Get a better idea of what these do and how to use them
 
 VimR GUI stuff:
 To pass commands to nvim from the CLI, use `vimr --nvim <args>`
+vimr -n --nvim -p file1 file2 - Open files in tabs in new window (vimr -n should do this but there's a bug)
+vimr -n --nvim -S <session-file>- Open session in new window
 
 Plugins:
 NERDTree:
