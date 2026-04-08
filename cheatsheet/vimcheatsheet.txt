@@ -1,6 +1,5 @@
 vimcheatsheet.txt
 Eliot's Vim Cheat Sheet
-Last Updated 2011-08-11
 
 Pick up on vimtutor line 805.
 
@@ -8,14 +7,23 @@ Pick up on vimtutor line 805.
 [CHAR] is a placeholder for a character, so and example of t[CHAR] is te
 
 invoking vim from the shell:
+:help starting
 vim FILE - edit a file in vim
 vim FILE1 FILE2 FILE3... - open several files in multiple buffers inside of a single vim instance
 gvim -p FILE1 FILE2... - open files in multiple tabs in GVim
 vimdiff FILE1 FILE2 - split-open two files showing only changes (highlighted)
 view - open vim in read-only mode (useful for reading from STDIN, i.e. "somecommand|view -" )
-vimtutor - open the vim interactive tutorial
+vimtutor or :Tutor - open the vim interactive tutorial
+
+general help:
+Type these commands in normal mode to access built-in help:
+:help - Open documentation index (in a horizontal split view)
+:help quickref - "Quick" commands/shortcuts reference
+:help user-manual - User manual
+:help helphelp - Help on using the built-in help system
 
 operators:
+:help usr_04
 d - delete
 c - change (delete and switch to insert mode)
 i - switch to insert mode before selected character
@@ -102,6 +110,7 @@ misc:
 ga - Print the ascii value of the character under the cursor
 
 visual mode:
+:help visual-mode
 v - enter visual mode (default - characterwise, single characters at a time)
 V - enter linewise visual mode (select whole lines at once)
 move cursor to select text.
@@ -117,11 +126,11 @@ A - append mode. Similar to insert mode, but start by appending a character, esp
 Use any operator when in visual blockwise mode...
 
 ex commands:
+:help cmdline
 type : to enter a command quickly.
 type q: to enter command-line mode which has a command history and is editable like a normal text buffer
 combine commands on the same line with a | character
 
-:help - open manual (in a horizontal split view)
 :close - close a window (in a split view)
 :[#] - go to line # in the file
 :w - write (save) changes
@@ -173,6 +182,7 @@ CTRL-p - Previous suggestion
 CTRL-y - Accept suggestion
 
 search:
+:help pattern-searches
 type / to begin entering a search (that will look forwards from the cursor position)
 type ? to begin entering a search that will look backwards from the cursor position
 type a search term & enter to start the search
@@ -210,6 +220,7 @@ Regex:
 
 Global ex commands:
 These can be used to run macros and all sorts of shit
+:help multi-repeat
 :g/old/d - remove all lines matching pattern old
 :%g/old/normal [somecommand] - run some normal vim keystrokes on all occurrences
 :%g/.../normal @[CHAR] - run recorded macro in register [CHAR] on all occurrences
