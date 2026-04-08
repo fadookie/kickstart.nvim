@@ -624,7 +624,14 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        ts_ls = {},
+        -- ts_ls = {
+        --   preferences = {
+        --     maximumHoverLength = 5000, -- this doesn't seem to work, see https://github.com/typescript-language-server/typescript-language-server/blob/master/docs/configuration.md#preferences-options
+        --   },
+        -- },
+
+        -- TypeScript Native Preview LSP
+        tsgo = {},
 
         stylua = {}, -- Used to format Lua code
 
