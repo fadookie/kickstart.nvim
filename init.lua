@@ -988,3 +988,6 @@ vim.o.hi = 150 -- command history is 150 long
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+-- Additional custom keybinds
+vim.keymap.set('n', '<leader>g]', '<C-W><C-]><C-W>T', { desc = 'Go to tag in new tab', remap = true })
