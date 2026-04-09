@@ -837,6 +837,18 @@ require('lazy').setup({
         styles = {
           comments = { italic = false }, -- Disable italics in comments
         },
+        on_colors = function(colors)
+          -- Override theme color pallete
+          -- See tokyonight.nvim/lua/tokyonight/colors/storm.lua for valid colors
+          -- colors.bg = '#440000' -- Override an individual color, can also assign one color to another
+          -- vim.print(colors) -- Print all colors when loading nvim
+        end,
+        on_highlights = function(highlights, colors)
+          -- Override mapping of theme colors to vim "highlights" (i.e. bg/fg pairs in specific UI locations)
+          -- See :highlight for a list, :help highlight
+          highlights.TabLine.fg = colors.blue -- Use higher-contrast fg color for inactive tabs
+          --vim.print(highlights) -- Print all valid highlight objects when loading nvim
+        end,
       }
 
       -- Load the colorscheme here.

@@ -12,3 +12,6 @@ spell/
 lazy-lock.json
 
 .DS_Store
+
+# (n)vim sessions
+*.session
