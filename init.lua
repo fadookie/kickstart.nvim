@@ -1003,3 +1003,4 @@ vim.o.hi = 150 -- command history is 150 long
 
 -- Additional custom keybinds
 vim.keymap.set('n', '<leader>g]', '<C-W><C-]><C-W>T', { desc = 'Go to tag in new tab', remap = true })
+vim.keymap.set('n', '<leader>sl', '/\\V\\c\\<\\><Left><Left>', { desc = '[S]earch [L]iteral Text', remap = false }) -- Needs some work
